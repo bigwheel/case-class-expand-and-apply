@@ -23,4 +23,13 @@ package object expandandapply {
   }#
 ]
 
+  implicit class RichProduct[P <: Product](p: P) {
+[2..#    def expandAndPipe[[#T1#], R](f: ([#T1#]) => R)
+      (implicit toTuple: ToTuple.Aux[P, ([#T1#])]): R = {
+      f.tupled(p.toTuple[([#T1#])])
+    }#
+]
+  }
+
+
 }
