@@ -1,0 +1,5 @@
+name := "case-class-expand-and-apply"
+
+version := "0.1"
+
+scalaVersion := "2.12.7"
