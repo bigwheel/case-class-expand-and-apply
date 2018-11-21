@@ -1,0 +1,26 @@
+package com.github.bigwheel
+
+import shapeless.ops.product.ToTuple
+import shapeless.syntax.std.product._
+
+package object expandandapply {
+
+  // Function1 has no `toTuple` method. Then this class is written seperately.
+  implicit class RichFunction1[T1, R](f: T1 => R) {
+    type ARGUMENTS = Tuple1[T1]
+    def expandAndApply[P <: Product](p: P)
+      (implicit toTuple: ToTuple.Aux[P, ARGUMENTS]): R = {
+      f(p.toTuple[ARGUMENTS]._1)
+    }
+  }
+
+[2..#  implicit class RichFunction1[[#T1#], R](f: ([#T1#]) => R) {
+    type ARGUMENTS = Tuple1[[#T1#]]
+    def expandAndApply[P <: Product](p: P)
+      (implicit toTuple: ToTuple.Aux[P, ARGUMENTS]): R = {
+      f.tupled(p.toTuple[ARGUMENTS])
+    }
+  }#
+]
+
+}
