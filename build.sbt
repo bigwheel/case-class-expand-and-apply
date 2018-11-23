@@ -1,6 +1,6 @@
 name := "case-class-expand-and-apply"
 organization := "com.github.bigwheel"
-version := "1.0.0"
+version := "1.0.1"
 scalaVersion := "2.12.7"
 
 libraryDependencies ++= Seq(
@@ -13,26 +13,9 @@ enablePlugins(spray.boilerplate.BoilerplatePlugin)
 
 // about maven publish
 publishMavenStyle := true
-publishTo := {
-  val nexus = "https://oss.sonatype.org/"
-  if (isSnapshot.value)
-    Some("snapshots" at nexus + "content/repositories/snapshots")
-  else
-    Some("releases"  at nexus + "service/local/staging/deploy/maven2")
-}
+publishTo := sonatypePublishTo.value
 publishArtifact in Test := false
-licenses := Seq("BSD-3-Clause" -> url("https://github.com/bigwheel/case-class-expand-and-apply/blob/master/LICENSE"))
-homepage := Some(url("https://github.com/bigwheel/case-class-expand-and-apply"))
-pomExtra := (
-  <scm>
-    <url>git@github.com:bigwheel/case-class-expand-and-apply.git</url>
-    <connection>scm:git:git@github.com:bigwheel/case-class-expand-and-apply.git</connection>
-  </scm>
-    <developers>
-      <developer>
-        <id>bigwheel</id>
-        <name>k.bigwheel</name>
-        <url>https://github.com/bigwheel</url>
-      </developer>
-    </developers>
-  )
+
+import xerial.sbt.Sonatype._
+sonatypeProjectHosting := Some(GitHubHosting("bigwheel", name.value, "k.bigwheel", "k.bigwheel+eng@gmail.com"))
+licenses := Seq("MIT license" -> url(homepage.value.get.toString + "/blob/master/LICENSE"))
