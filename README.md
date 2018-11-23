@@ -10,7 +10,7 @@ If you use SBT you can include case-class-expand-and-apply in your project with
 
 ```scala
 libraryDependencies ++= Seq(
-  "com.github.bigwheel" %% "case-class-expand-and-apply" % "1.0.1",
+  "com.github.bigwheel" %% "case-class-expand-and-apply" % "1.0.2",
 )
 ```
 

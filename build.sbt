@@ -1,12 +1,14 @@
 name := "case-class-expand-and-apply"
 organization := "com.github.bigwheel"
-version := "1.0.1"
+version := "1.0.2"
 scalaVersion := "2.12.7"
+
+crossScalaVersions := Seq("2.12.7", "2.13.0-M5")
 
 libraryDependencies ++= Seq(
   "com.chuusai" %% "shapeless" % "2.3.3",
-  "org.scalactic" %% "scalactic" % "3.0.5",
-  "org.scalatest" %% "scalatest" % "3.0.5" % "test",
+  "org.scalactic" %% "scalactic" % "3.0.+",
+  "org.scalatest" %% "scalatest" % "3.0.+" % "test",
 )
 
 enablePlugins(spray.boilerplate.BoilerplatePlugin)
